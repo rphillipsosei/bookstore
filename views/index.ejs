@@ -21,20 +21,22 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light border">
-    <a class="navbar-brand" href="#"><img src="../images/bookstore-logo.png" width="300" height="100"
-        class="d-inline-block align-top" alt=""></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse d-flex justify-content-end font-weight-bold h4" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-link" href="#">Login</a>
-        <a class="nav-link" href="#">Register</a>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light border">
+      <a class="navbar-brand" href="#"><img src="../images/bookstore-logo.png" width="300" height="100"
+          class="d-inline-block align-top" alt=""></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse d-flex justify-content-end font-weight-bold h4" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link" href="#">Login</a>
+          <a class="nav-link" href="#">Register</a>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
+  </header>
 
   <main>
 
@@ -62,18 +64,18 @@
       </ul>
     </section>
 
-    <section class="jumbotron mb-5">
+    <section class="jumbotron bg-white mb-5">
       <div class="row justify-content-around">
-        <div class="card col-4" style="width: 18rem;">
-          <img src="../images/books-buy.jpg" class="card-img-top" alt="...">
+        <div class="card col-4 shadow-sm p-3 mb-5 bg-white rounded" style="width: 18rem;">
+          <img src="../images/books-cart-buy.jpg" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">Buy</h5>
             <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
             <a href="#" class="btn btn-success"><i class="fa-solid h5 fa-basket-shopping"></i></a>
           </div>
         </div>
-        <div class="card col-4" style="width: 18rem;">
-          <img src="../images/books-cart-sell.jpg" class="card-img-top" alt="...">
+        <div class="card col-4 shadow-sm p-3 mb-5 bg-white rounded" style="width: 18rem;">
+          <img src="../images/books-sell.jpg" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">Sell</h5>
             <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
@@ -84,18 +86,74 @@
     </section>
 
     <section>
-      <h4 class="text-center">FEATURED BOOKS</h4>
+      <h4 class="text-center mb-5">FEATURED BOOKS</h4>
     </section>
 
     <section class="jumbotron">
-      <img src="..." class="img-fluid" alt="...">
-      <img src="..." class="img-fluid" alt="...">
-      <img src="..." class="img-fluid" alt="...">
-      <img src="..." class="img-fluid" alt="...">
-      <img src="..." class="img-fluid" alt="...">
+      <!-- <div class="carousel-container">
+        <div class="carousel-inner">
+          <div class="track">
+            <div class="carousel-card-container">
+              <div class="carousel-card"><img src="../images/the-lobotomist's-wife.png" alt="..."></div>
+            </div>
+            <div class="carousel-card-container">
+              <div class="carousel-card"><img src="../images/prophet.png" alt="..."></div>
+            </div>
+            <div class="carousel-card-container">
+              <div class="carousel-card"><img src="../images/how-to-do-work.png" alt="..."></div>
+            </div>
+            <div class="carousel-card-container">
+              <div class="carousel-card"><img src="../images/sapiens.png" alt="..."></div>
+            </div>
+            <div class="carousel-card-container">
+              <div class="carousel-card"><img src="../images/sapiens.png" alt="..."></div>
+            </div>
+            <div class="carousel-card-container">
+              <div class="carousel-card"><img src="../images/sapiens.png" alt="..."></div>
+            </div>
+            <div class="carousel-card-container">
+              <div class="carousel-card"><img src="../images/sapiens.png" alt="..."></div>
+            </div>
+          </div>
+        </div>
+        <div class="nav">
+          <button class="prev"><i class="fa-solid fa-angles-left"></i></button>
+          <button class="next"><i class="fa-solid fa-angles-right"></i></button>
+        </div>
+      </div> -->
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+        <div class="col"><img src="../images/the-lobotomist's-wife.png" class="img-fluid" alt="..."></div>
+        <div class="col"><img src="../images/prophet.png" class="img-fluid" alt="..."></div>
+        <div class="col"><img src="../images/how-to-do-work.png" class="img-fluid" alt="..."></div>
+        <div class="col"><img src="../images/sapiens.png" class="img-fluid" alt="..."></div>
+      </div>
+    </section>
+
+    <section class="jumbotron bg-white">
+      <form>
+        <div class="form-group">
+          <label for="exampleInputEmail1" class="h4">Email address</label>
+          <input type="email" class="form-control w-50" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>
+        <div class="container">
+          <input type="submit" value="Subscribe">
+        </div>
+      </form>
     </section>
 
   </main>
+
+  <footer>
+    <div class="jumbotron mb-0">
+      <p class="text-center">Lighthouse Lab || &copy;copyright 2022. </p>
+    </div>
+  </footer>
 </body>
 
 </html>

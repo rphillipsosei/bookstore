@@ -34,7 +34,7 @@ The following steps are only for _one_ of the group members to perform.
 - Split database schema (table definitions) and seeds (inserts) into separate files, one per table. See `db` folder for pre-populated examples. 
 - Use the `npm run db:reset` command each time there is a change to the database schema or seeds. 
   - It runs through each of the files, in order, and executes them against the database. 
-  - Note: you will lose all newly created (test) data each time this is run, since the schema files will tend to `DROP` the tables and recreate them.
+  <!-- - Note: you will lose all newly created (test) data each time this is run, since the schema files will tend to `DROP` the tables and recreate them. -->
 
 ## Dependencies
 

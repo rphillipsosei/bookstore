@@ -2,7 +2,7 @@
 require("dotenv").config();
 
 // Web server config
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8000;
 const sassMiddleware = require("./lib/sass-middleware");
 const express = require("express");
 const app = express();
@@ -12,7 +12,13 @@ const morgan = require("morgan");
 const { Pool } = require("pg");
 const dbParams = require("./lib/db.js");
 const db = new Pool(dbParams);
-db.connect();
+db.connect()
+.then(() => {
+  console.log('Connected to db')
+})
+.catch((error) => {
+  console.log('Error while connecting to db', error)
+})
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -55,6 +61,22 @@ app.get("/", (req, res) => {
 app.get("/products", (req, res) => {
   res.render("products");
 });
+
+app.get("/favourites", (req, res) => {
+  res.render("products");
+});
+
+app.get("/register", (req, res) => {
+   res.render("register");
+});
+
+app.get("/login", (req, res) => {
+   res.render("login");
+});
+
+app.get("/new_listing", (req, res) => {
+  res.render("new_listing");
+})
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

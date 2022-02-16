@@ -68,6 +68,10 @@ app.get("/login", (req, res) => {
    res.render("login");
 });
 
+app.get("/new_listing", (req, res) => {
+  res.render("new_listing");
+})
+
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });

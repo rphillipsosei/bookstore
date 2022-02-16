@@ -66,62 +66,32 @@
               </div>
             </div>
           </div>
+          <p><%=books.length%></p>
           <div class="col-12 col-md-10">
             <div class="card">
               <div class="card-body">
                 <div id="display-items-div">
                   <div class="row justify-content-around mb-4 ">
-                    <div class="card" style="width: 18rem;">
-                      <img src="../images/the-lobotomist's-wife.png" class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique suscipit, minus magni
-                          inventore officiis quaerat nihil nobis in dolor nesciunt atque a maiores voluptas
-                          perferendis doloremque, asperiores dolores vel quam.</p>
-                        <div class="d-flex justify-content-between">
-                          <p class="h5 pt-1">$ 10</p>
-                          <p>
-                            <a href="#" class="btn btn-success"><i class="fa-solid fa-basket-shopping"></i></a>
-                            <a href="/favourites" class="btn btn-success"><i class="fa-solid fa-heart"></i></a>
-                          </p>
+                      <% for(let book of books) {%>
+                      <div class="card" style="width: 18rem;">
+                        <img src="<%= book.image_url%>" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title"><%= book.title %></h5>
+                          <p><%= book.summary %></p>
+                          <div class="d-flex justify-content-between">
+                            <p class="h5 pt-1"><%= book.price%></p>
+                            <p>
+                              <a href="#" class="btn btn-success"><i class="fa-solid fa-basket-shopping"></i></a>
+                              <a href="/favourites" class="btn btn-success"><i class="fa-solid fa-heart"></i></a>
+                            </p>
+                          </div>
                         </div>
                       </div>
+                      
+                      <%} %>
                     </div>
-                    <div class="card" style="width: 18rem;">
-                      <img src="../images/peace.jpg" class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique suscipit, minus magni
-                          inventore officiis quaerat nihil nobis in dolor nesciunt atque a maiores voluptas
-                          perferendis doloremque, asperiores dolores vel quam.</p>
-                        <div class="d-flex justify-content-between">
-                          <p class="h5 pt-1">$ 30</p>
-                          <p>
-                            <a href="#" class="btn btn-success"><i class="fa-solid fa-basket-shopping"></i></a>
-                            <a href="/favourites" class="btn btn-success"><i class="fa-solid fa-heart"></i></a>
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card" style="width: 18rem;">
-                      <img src="../images/mathias-pr-reding.jpg" class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique suscipit, minus magni
-                          inventore officiis quaerat nihil nobis in dolor nesciunt atque a maiores voluptas
-                          perferendis doloremque, asperiores dolores vel quam.</p>
-                        <div class="d-flex justify-content-between">
-                          <p class="h5 pt-1">$ 20</p>
-                          <p>
-                            <a href="#" class="btn btn-success"><i class="fa-solid fa-basket-shopping"></i></a>
-                            <a href="#" class="btn btn-success"><i class="fa-solid fa-heart"></i></a>
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
 
-                  <div class="row justify-content-around mb-4">
+                  <!-- <div class="row justify-content-around mb-4">
                     <div class="card" style="width: 18rem;">
                       <img src="../images/sapiens.png" class="card-img-top" alt="...">
                       <div class="card-body">
@@ -221,7 +191,7 @@
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
               </div>
             </div>

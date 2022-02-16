@@ -2,11 +2,18 @@
 require("dotenv").config();
 
 // Web server config
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 5000;
 const sassMiddleware = require("./lib/sass-middleware");
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
+
+// Separated Routes for each Resource
+// Note: Feel free to replace the example routes below with your own
+const usersRoutes = require("./routes/users");
+const productsRoutes = require("./routes/products")
+
+// const { query } = require("express");
 
 // PG database client/connection setup
 const { Pool } = require("pg");
@@ -26,7 +33,7 @@ db.connect()
 app.use(morgan("dev"));
 
 app.set("view engine", "ejs");
-app.use(express.urlencoded({ extended: true }));
+// app.use(express.urlencoded({ extended: true }));
 
 app.use(
   "/styles",
@@ -39,16 +46,12 @@ app.use(
 
 app.use(express.static("public"));
 
-// Separated Routes for each Resource
-// Note: Feel free to replace the example routes below with your own
-const usersRoutes = require("./routes/users");
-const widgetsRoutes = require("./routes/widgets");
-const { query } = require("express");
+
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
-app.use("/api/users", usersRoutes(db));
-app.use("/api/widgets", widgetsRoutes(db));
+app.use("/users", usersRoutes(db));
+app.use("/products", productsRoutes(db))
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -59,17 +62,17 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-app.get("/products", (req, res) => {
-  db.query("SELECT FROM books WHERE price >= $1 AND price <= $2", [req.query.minPrice, req.query.maxPrice])
-  .then((result) => {
-    res.render("products", {books: result.rows});
+// app.get("/products", (req, res) => {
+//   db.query("SELECT FROM books WHERE price >= $1 AND price <= $2", [req.query.minPrice, req.query.maxPrice])
+//   .then((result) => {
+//     res.render("products", {books: result.rows});
 
 
-  }).catch((error) => {
-console.log(error)
-res.send(error);
-  })
-});
+//   }).catch((error) => {
+// console.log(error)
+// res.send(error);
+//   })
+// });
 
 
 

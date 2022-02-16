@@ -26,8 +26,9 @@
 
   <main>
 
+    <!--Create new listing items-->
     <section>
-      <div class="container">
+      <div class="container mb-5">
         <h3 class="jumbotron bg-white text-center">Item For Sale</h3>
         <div class="jumbotron bg-secondary">
           <form class="card rounded-lg p-4">
@@ -69,21 +70,34 @@
                   placeholder="$">
               </div>
             </div>
-            <div class="d-flex justify-content-between">
-              <div>
-                <button type="submit" class="btn btn-success mt-3">Submit</button>
-              </div>
-              <div>
-                <button type="submit" class="btn btn-success mt-3">Delete</button>
-                <button type="submit" class="btn btn-success mt-3">Sold</button>
-              </div>
+            <div class="d-flex justify-content-start">
+              <button type="submit" class="btn btn-success mt-3">Submit</button>
             </div>
           </form>
         </div>
       </div>
     </section>
 
-
+    <!--your listing items-->
+    <section id="new-listing-items">
+      <div class="card-header jumbotron text-center my-5">
+        <h3>Your listing books</h3>
+      </div>
+      <div class="card container shadow-sm p-3 mb-5 bg-white rounded" style="width: 40rem;">
+        <img class="card-img-top" src="../images/peace.jpg"  alt="Book">
+        <div class="card-body">
+          <h5 class="card-title">Book title</h5>
+          <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique suscipit, minus magni
+            inventore officiis quaerat nihil nobis in dolor nesciunt atque a maiores voluptas
+            perferendis doloremque, asperiores dolores vel quam.
+          </p>
+          <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-success mr-2 mt-3">Delete</button>
+            <button type="submit" class="btn btn-success mt-3">Sold</button>
+          </div>
+        </div>
+      </div>
+    </section>
 
   </main>
 

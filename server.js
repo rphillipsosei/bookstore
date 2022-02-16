@@ -37,6 +37,7 @@ app.use(express.static("public"));
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
+const { query } = require("express");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -53,8 +54,18 @@ app.get("/", (req, res) => {
 });
 
 app.get("/products", (req, res) => {
-  res.render("products");
+  db.query("SELECT FROM books WHERE price >= $1 AND price <= $2", [req.query.minPrice, req.query.maxPrice])
+  .then((result) => {
+    res.render("products", {books: result.rows});
+
+
+  }).catch((error) => {
+console.log(error)
+res.send(error);
+  })
 });
+
+
 
 // app.get("/products/favourites", (req, res) => {
 //   res.render("products/favourites");

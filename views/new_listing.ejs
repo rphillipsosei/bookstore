@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Buy/Sell Books</title>
+
+  <!--Bootstrap link-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+    integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+  <!--font-icon-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+</head>
+
+<body>
+
+  <%- include('partials/_header') %>
+
+  <main>
+
+    <!--Create new listing items-->
+    <section>
+      <div class="container mb-5">
+        <h3 class="jumbotron bg-white text-center">Item For Sale</h3>
+        <div class="jumbotron bg-secondary">
+          <form class="card rounded-lg p-4">
+            <div class="text-center mb-4">
+              <img src="../images/goldie.jpg" class="img-fluid rounded" width="50%" height="50%" alt="Book">
+            </div>
+            <div class="form-group d-flex flex-column">
+              <label for="photos" class="h5">Add photos</label>
+              <input type="file" id="photos" name="photos">
+            </div>
+            <div class="form-group">
+              <label for="title" class="h5">Title</label>
+              <input type="text" class="form-control" id="title"
+                placeholder="book title">
+            </div>
+            <div class="form-group">
+              <label for="author" class="h5">Author</label>
+              <input type="text" class="form-control" id="author"
+                placeholder="author">
+            </div>
+            <div class="form-group">
+              <label for="isbn" class="h5">ISBN:</label>
+              <input type="text" class="form-control" id="isbn"
+                placeholder="isbn no.">
+            </div>
+            <div class="form-group">
+              <label for="description" class="h5">Description:</label>
+              <textarea class="form-control" id="description"></textarea>
+            </div>
+            <div class="row">
+              <div class="form-group col">
+                <label for="condition" class="h5">Condition:</label>
+                <input type="text" class="form-control" id="condition"
+                  placeholder="condition">
+              </div>
+              <div class="form-group col">
+                <label for="price" class="h5">Price:</label>
+                <input type="text" class="form-control" id="price"
+                  placeholder="$">
+              </div>
+            </div>
+            <div class="d-flex justify-content-start">
+              <button type="submit" class="btn btn-success mt-3">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!--your listing items-->
+    <section id="new-listing-items">
+      <div class="card-header jumbotron text-center my-5">
+        <h3>Your listing books</h3>
+      </div>
+      <div class="card container shadow-sm p-3 mb-5 bg-white rounded" style="width: 40rem;">
+        <img class="card-img-top" src="../images/peace.jpg"  alt="Book">
+        <div class="card-body">
+          <h5 class="card-title">Book title</h5>
+          <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique suscipit, minus magni
+            inventore officiis quaerat nihil nobis in dolor nesciunt atque a maiores voluptas
+            perferendis doloremque, asperiores dolores vel quam.
+          </p>
+          <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-success mr-2 mt-3">Delete</button>
+            <button type="submit" class="btn btn-success mt-3">Sold</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <%- include('partials/_footer') %>
+
+  <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+
+  <!-- Option 2: Separate Popper and Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
+    integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

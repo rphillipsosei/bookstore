@@ -2,7 +2,7 @@
 require("dotenv").config();
 
 // Web server config
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8000;
 const sassMiddleware = require("./lib/sass-middleware");
 const express = require("express");
 const app = express();
@@ -12,7 +12,13 @@ const morgan = require("morgan");
 const { Pool } = require("pg");
 const dbParams = require("./lib/db.js");
 const db = new Pool(dbParams);
-db.connect();
+db.connect()
+.then(() => {
+  console.log('Connected to db')
+})
+.catch((error) => {
+  console.log('Error while connecting to db', error)
+})
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -37,6 +43,7 @@ app.use(express.static("public"));
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
+const { query } = require("express");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -53,8 +60,35 @@ app.get("/", (req, res) => {
 });
 
 app.get("/products", (req, res) => {
+  db.query("SELECT FROM books WHERE price >= $1 AND price <= $2", [req.query.minPrice, req.query.maxPrice])
+  .then((result) => {
+    res.render("products", {books: result.rows});
+
+
+  }).catch((error) => {
+console.log(error)
+res.send(error);
+  })
+});
+
+
+
+
+app.get("/favourites", (req, res) => {
   res.render("products");
 });
+
+app.get("/register", (req, res) => {
+   res.render("register");
+});
+
+app.get("/login", (req, res) => {
+   res.render("login");
+});
+
+app.get("/new_listing", (req, res) => {
+  res.render("new_listing");
+})
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

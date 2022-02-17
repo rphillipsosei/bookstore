@@ -17,3 +17,6 @@ $(document).ready(function () {
   });
 
 });
+
+
+// When you are working on your-branch to pull in latest master changes:  1. Git checkout master 2. Git pull origin master 3. Git checkout your-branch 4. Git merge master

@@ -46,7 +46,8 @@ app.use(
 
 app.use(express.static("public"));
 
-
+// const productsRoutes = require("/routes/products");
+// const usersRoutes = require("/routes/users");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own

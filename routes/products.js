@@ -9,13 +9,14 @@ const express = require('express');
 const router  = express.Router();
 
 
+
 module.exports = (db) => {
   router.get("/", (req, res) => {
     console.log("testing")
-    let query = 
+    let query =
     `SELECT image_url, title, author, price, summary
     FROM books order by id asc
-    LIMIT 30`;
+    LIMIT 5`;
     console.log(query);
     db.query(query)
       .then(data => {

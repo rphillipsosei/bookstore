@@ -55,35 +55,36 @@
               <hr>
               <h4>Price:</h4>
               <div class="card-body">
-                <form id="price-range-form">
+                <form id="price-range-form" method="POST" action="/products">
                   <label for="min-price" class="form-label">Min price: </label>
                   <span id="min-price-txt">$0</span>
-                  <input type="range" class="form-range" min="0" max="99" id="min-price" step="1">
+                  <input type="range" name="min-price" class="form-range" min="0" max="99" id="min-price" step="1" value="0">
                   <label for="max-price" class="form-label">Max price: </label>
                   <span id="max-price-txt">$100</span>
-                  <input type="range" class="form-range" min="1" max="100" id="max-price" step="1">
+                  <input type="range" name="max-price" class="form-range" min="1" max="100" id="max-price" step="1" value="100">
                   <button type="submit" class="btn btn-success mt-2">Go</button>
                 </form>
               </div>
             </div>
           </div>
-          <p><%=books.length%></p>
+          <!-- <p><%=books.length%></p> -->
           <div class="col-12 col-md-10">
             <div class="card">
               <div class="card-body">
                 <div id="display-items-div">
                   <div class="row justify-content-around mb-4 ">
                       <% for(let book of books) {%>
-                      <div class="card" style="width: 18rem;">
+                      <div class="card mb-3" style="width: 18rem;">
                         <img src="<%= book.image_url%>" class="card-img-top" alt="...">
-                        <div class="card-body">
+                        <div class="card-body d-flex flex-column justify-content-between">
                           <h5 class="card-title"><%= book.title %></h5>
                           <p><%= book.summary %></p>
                           <div class="d-flex justify-content-between">
                             <p class="h5 pt-1"><%= book.price%></p>
                             <p>
                               <a href="#" class="btn btn-success"><i class="fa-solid fa-basket-shopping"></i></a>
-                              <a href="/favourites" class="btn btn-success"><i class="fa-solid fa-heart"></i></a>
+                              <a href="<%= `/products/${book.id}/favourites` %>" class="btn btn-success"><i class="fa-solid fa-heart"></i></a>
+                              <a href="#" class="btn btn-success"><i class="fa-solid fa-message"></i></a>
                             </p>
                           </div>
                         </div>
@@ -91,132 +92,7 @@
 
                       <%} %>
                     </div>
-                    <div class="card" style="width: 18rem;">
-                      <img src="../images/mathias-pr-reding.jpg" class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique suscipit, minus magni
-                          inventore officiis quaerat nihil nobis in dolor nesciunt atque a maiores voluptas
-                          perferendis doloremque, asperiores dolores vel quam.</p>
-                        <div class="d-flex justify-content-between">
-                          <p class="h5 pt-1">$ 20</p>
-                          <p>
-                            <a href="#" class="btn btn-success"><i class="fa-solid fa-basket-shopping"></i></a>
-                            <a href="#" class="btn btn-success"><i class="fa-solid fa-heart"></i></a>
-                            <a href="#" class="btn btn-success"><i class="fa-solid fa-message"></i></a>
-                          </p>
-                        </div>
-                      </div>
-                    </div>
                   </div>
-
-                  <!-- <div class="row justify-content-around mb-4">
-                    <div class="card" style="width: 18rem;">
-                      <img src="../images/sapiens.png" class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique suscipit, minus magni
-                          inventore officiis quaerat nihil nobis in dolor nesciunt atque a maiores voluptas
-                          perferendis doloremque, asperiores dolores vel quam.</p>
-                        <div class="d-flex justify-content-between">
-                          <p class="h5 pt-1">$ 25</p>
-                          <p>
-                            <a href="#" class="btn btn-success"><i class="fa-solid fa-basket-shopping"></i></a>
-                            <a href="/favourites" class="btn btn-success"><i class="fa-solid fa-heart"></i></a>
-                            <a href="#" class="btn btn-success"><i class="fa-solid fa-message"></i></a>
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card" style="width: 18rem;">
-                      <img src="../images/reduce-reuse-recycle.jpg" class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique suscipit, minus magni
-                          inventore officiis quaerat nihil nobis in dolor nesciunt atque a maiores voluptas
-                          perferendis doloremque, asperiores dolores vel quam.</p>
-                        <div class="d-flex justify-content-between">
-                          <p class="h5 pt-1">$ 20</p>
-                          <p>
-                            <a href="#" class="btn btn-success"><i class="fa-solid fa-basket-shopping"></i></a>
-                            <a href="/favourites" class="btn btn-success"><i class="fa-solid fa-heart"></i></a>
-                            <a href="#" class="btn btn-success"><i class="fa-solid fa-message"></i></a>
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card" style="width: 18rem;">
-                      <img src="../images/prophet.png" class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique suscipit, minus magni
-                          inventore officiis quaerat nihil nobis in dolor nesciunt atque a maiores voluptas
-                          perferendis doloremque, asperiores dolores vel quam.</p>
-                        <div class="d-flex justify-content-between">
-                          <p class="h5 pt-1">$ 40</p>
-                          <p>
-                            <a href="#" class="btn btn-success"><i class="fa-solid fa-basket-shopping"></i></a>
-                            <a href="/favourites" class="btn btn-success"><i class="fa-solid fa-heart"></i></a>
-                            <a href="#" class="btn btn-success"><i class="fa-solid fa-message"></i></a>
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="row justify-content-around mb-4">
-                    <div class="card" style="width: 18rem;">
-                      <img src="../images/your-soul.jpg" class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique suscipit, minus magni
-                          inventore officiis quaerat nihil nobis in dolor nesciunt atque a maiores voluptas
-                          perferendis doloremque, asperiores dolores vel quam.</p>
-                        <div class="d-flex justify-content-between">
-                          <p class="h5 pt-1">$ 20</p>
-                          <p>
-                            <a href="#" class="btn btn-success"><i class="fa-solid fa-basket-shopping"></i></a>
-                            <a href="/favourites" class="btn btn-success"><i class="fa-solid fa-heart"></i></a>
-                            <a href="#" class="btn btn-success"><i class="fa-solid fa-message"></i></a>
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card" style="width: 18rem;">
-                      <img src="../images/how-to-do-work.png" class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique suscipit, minus magni
-                          inventore officiis quaerat nihil nobis in dolor nesciunt atque a maiores voluptas
-                          perferendis doloremque, asperiores dolores vel quam.</p>
-                        <div class="d-flex justify-content-between">
-                          <p class="h5 pt-1">$ 50</p>
-                          <p>
-                            <a href="#" class="btn btn-success"><i class="fa-solid fa-basket-shopping"></i></a>
-                            <a href="/favourites" class="btn btn-success"><i class="fa-solid fa-heart"></i></a>
-                            <a href="#" class="btn btn-success"><i class="fa-solid fa-message"></i></a>
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card" style="width: 18rem;">
-                      <img src="../images/the-passion-within.jpg" class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique suscipit, minus magni
-                          inventore officiis quaerat nihil nobis in dolor nesciunt atque a maiores voluptas
-                          perferendis doloremque, asperiores dolores vel quam.</p>
-                        <div class="d-flex justify-content-between">
-                          <p class="h5 pt-1">$ 20</p>
-                          <p>
-                            <a href="#" class="btn btn-success"><i class="fa-solid fa-basket-shopping"></i></a>
-                            <a href="/favourites" class="btn btn-success"><i class="fa-solid fa-heart"></i></a>
-                            <a href="#" class="btn btn-success"><i class="fa-solid fa-message"></i></a>
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div> -->
                 </div>
               </div>
             </div>

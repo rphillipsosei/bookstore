@@ -1,9 +1,0 @@
-DROP TABLE IF EXISTS users CASCADE;
-CREATE TABLE users (
-  id SERIAL PRIMARY KEY NOT NULL,
-  username VARCHAR(20) NOT NULL,
-  password VARCHAR(12) NOT NULL,
-  email VARCHAR(50),
-  country VARCHAR(30),
-  is_admin BOOLEAN
-);

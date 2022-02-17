@@ -2,12 +2,13 @@ DROP TABLE IF EXISTS books CASCADE;
 
 CREATE TABLE books (
     id SERIAL PRIMARY KEY NOT NULL,
+    owner_id INTEGER NOT NULL,
     title VARCHAR(255) NOT NULL,
     author VARCHAR(255) NOT NULL,
     genre VARCHAR(255) NOT NULL,
     summary VARCHAR(255) NOT NULL,
     isbn VARCHAR (255) NOT NULL,
-    price VARCHAR (255) NOT NULL,
+    price DOUBLE PRECISION NOT NULL,
     condition VARCHAR (255) NOT NULL,
     image_url VARCHAR (255) NOT NULL
 );

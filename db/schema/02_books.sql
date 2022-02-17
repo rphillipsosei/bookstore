@@ -8,7 +8,7 @@ CREATE TABLE books (
     genre VARCHAR(255) NOT NULL,
     summary VARCHAR(255) NOT NULL,
     isbn VARCHAR (255) NOT NULL,
-    price VARCHAR (255) NOT NULL,
+    price DOUBLE PRECISION NOT NULL,
     condition VARCHAR (255) NOT NULL,
     image_url VARCHAR (255) NOT NULL
 );

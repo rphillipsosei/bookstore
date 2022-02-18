@@ -16,4 +16,10 @@ $(document).ready(function () {
 
   });
 
+  $("#go").on("click", function (event) {
+    event.preventDefault();
+    console.log("button clicked")
+  })
+
+
 });

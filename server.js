@@ -59,8 +59,8 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-app.get("/products", (req, res) => {
-  db.query("SELECT FROM books WHERE price >= $1 AND price <= $2", [req.query.minPrice, req.query.maxPrice])
+app.get("/products/:minPrice/:maxPrice", (req, res) => {
+  db.query(`SELECT FROM books WHERE price >= $1 AND price <= $2`, [req.params.minPrice, req.params.maxPrice])
   .then((result) => {
     res.render("products", {books: result.rows});
 
@@ -71,7 +71,17 @@ res.send(error);
   })
 });
 
+app.get("/products", (req, res) => {
+  db.query("SELECT * FROM books;")
+  .then((result) => {
+    res.render("products", {books: result.rows});
 
+
+  }).catch((error) => {
+console.log(error)
+res.send(error);
+  })
+});
 
 
 app.get("/favourites", (req, res) => {

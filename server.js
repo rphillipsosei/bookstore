@@ -2,19 +2,27 @@
 require("dotenv").config();
 
 // Web server config
-const PORT = process.env.PORT || 5050;
+const PORT = process.env.PORT || 8080;
 const sassMiddleware = require("./lib/sass-middleware");
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
 
 app.use(express.urlencoded({extended: true}));
+
+
+
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
 const productsRoutes = require("./routes/products")
+const newListingRoutes = require("./routes/new_listing")
+const messagesRoutes = require("./routes/messages")
 
 // const { query } = require("express");
+
+
+
 
 // PG database client/connection setup
 const { Pool } = require("pg");
@@ -52,36 +60,48 @@ app.use(express.static("public"));
 // Note: Feel free to replace the example routes below with your own
 app.use("/users", usersRoutes(db));
 app.use("/products", productsRoutes(db));
+app.use("/new_listing", newListingRoutes(db));
+app.use("/messages", messagesRoutes(db));
+// app.use("/new_listing", messagesRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
-app.get("/", (req, res) => {
-  res.render("index");
-});
+// app.get("/", (req, res) => {
+//   res.render("index");
+// });
 
-app.get("/products", (req, res) => {
-  res.render("products");
-});
+// app.get("/products", (req, res) => {
+//   res.render("products");
+// });
 
-app.get("/favourites", (req, res) => {
-  res.render("products");
-});
+// app.get("/favourites", (req, res) => {
+//   res.render("products");
+// });
 
-app.get("/register", (req, res) => {
-   res.render("register");
-});
+// app.get("/register", (req, res) => {
+//    res.render("register");
+// });
 
-app.get("/login", (req, res) => {
-   res.render("login");
-});
+// app.get("/login", (req, res) => {
+//    res.render("login");
+// });
 
-app.get("/new_listing", (req, res) => {
-  res.render("new_listing");
-})
+// app.get("/new_listing", (req, res) => {
+//   res.render("new_listing");
+// })
 
-app.listen(PORT, () => {
+const httpServer = app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
+
+const io = require('socket.io')(httpServer)
+
+
+io.on('connection', client => {
+
+
+  client.emit('chat-message', 'Hello World')
+})

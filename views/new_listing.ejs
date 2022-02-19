@@ -31,42 +31,47 @@
       <div class="container mb-5">
         <h3 class="jumbotron bg-white text-center">Item For Sale</h3>
         <div class="jumbotron bg-secondary">
-          <form class="card rounded-lg p-4">
+          <form class="card rounded-lg p-4" action="/new_listing/create" method= "POST">
             <div class="text-center mb-4">
               <img src="../images/goldie.jpg" class="img-fluid rounded" width="50%" height="50%" alt="Book">
             </div>
             <div class="form-group d-flex flex-column">
-              <label for="photos" class="h5">Add photos</label>
-              <input type="file" id="photos" name="photos">
+              <label for="photos" class="h5">Add photos:</label>
+              <input type="text" id="photos" name="photos">
             </div>
             <div class="form-group">
-              <label for="title" class="h5">Title</label>
-              <input type="text" class="form-control" id="title"
+              <label for="title" class="h5">Title:</label>
+              <input type="text" class="form-control" id="title" name="title"
                 placeholder="book title">
             </div>
             <div class="form-group">
-              <label for="author" class="h5">Author</label>
-              <input type="text" class="form-control" id="author"
+              <label for="author" class="h5">Author:</label>
+              <input type="text" class="form-control" id="author" name="author"
                 placeholder="author">
             </div>
             <div class="form-group">
+              <label for="genre" class="h5">Genre</label>
+              <input type="text" class="form-control" id="genre" name="genre"
+                placeholder="genre">
+            </div>
+            <div class="form-group">
               <label for="isbn" class="h5">ISBN:</label>
-              <input type="text" class="form-control" id="isbn"
-                placeholder="isbn no.">
+              <input type="text" class="form-control" id="isbn" name="isbn"
+                placeholder="isbn">
             </div>
             <div class="form-group">
               <label for="description" class="h5">Description:</label>
-              <textarea class="form-control" id="description"></textarea>
+              <textarea class="form-control" id="description" name="summary" ></textarea>
             </div>
             <div class="row">
               <div class="form-group col">
                 <label for="condition" class="h5">Condition:</label>
-                <input type="text" class="form-control" id="condition"
+                <input type="text" class="form-control" id="condition" name="condition"
                   placeholder="condition">
               </div>
               <div class="form-group col">
                 <label for="price" class="h5">Price:</label>
-                <input type="text" class="form-control" id="price"
+                <input type="text" class="form-control" id="price" name="price"
                   placeholder="$">
               </div>
             </div>
@@ -81,7 +86,7 @@
     <!--your listing items-->
     <section id="new-listing-items">
       <div class="card-header jumbotron text-center my-5">
-        <h3>Your listing books</h3>
+        <h3>Your listings</h3>
       </div>
       <div class="card container shadow-sm p-3 mb-5 bg-white rounded" style="width: 40rem;">
         <img class="card-img-top" src="../images/peace.jpg"  alt="Book">

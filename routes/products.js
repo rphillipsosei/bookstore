@@ -14,8 +14,8 @@ module.exports = (db) => {
     // console.log("testing")
     let query =
     `SELECT id, image_url, title, author, price, summary
-    FROM books order by id asc
-    LIMIT 5`;
+    FROM books 
+    ORDER BY title`;
     console.log(query);
     db.query(query)
       .then(data => {
@@ -40,7 +40,6 @@ module.exports = (db) => {
     const query = `
     SELECT * FROM books
     WHERE price BETWEEN $1 AND $2
-    LIMIT 9
     `;
 
     db.query(query, [minValue, maxValue])

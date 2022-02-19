@@ -9,7 +9,9 @@ $('#connect').on('click', () => {
    if(socket) {
        return;
    }
-    socket = connect()
+   //add name submitted by user to user database, then connect this entry
+   const name = $("#name").val();
+    socket = connect(name)
     })
 
 //disconnect on click
@@ -25,11 +27,27 @@ $('#disconnect').on('click', () => {
 });
 
 
-const connect = function() {
+const connect = function(name) {
     const socket = io();
-//connect will be triggered by event from user
+
     socket.on("connect", event => {
         console.log("Connected to server")
+        
+        
+        // keep the user (second param) in memory
+        socket.emit("register", name)
+    });
+
+
+//user will be notified upon cxn by other users (NOT WORKING )
+    socket.on("notify", data => {
+       $(".notify").html(data)
+    })
+
+    
+    //message to all users about number of connected clients
+    socket.on('status', data => {
+        $('.status').html(data)
     })
 
     return socket

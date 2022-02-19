@@ -4,6 +4,8 @@ const app = express();
 
 app.use(express.static("public"))
 
-httpServer = app.listen(8080, () => {
+const httpServer = app.listen(8080, () => {
     console.log('Server running at http://localhost:8080/');
 });
+
+socketServer.listen(httpServer);

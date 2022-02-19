@@ -24,6 +24,7 @@ $('#disconnect').on('click', () => {
 
 });
 
+
 const connect = function() {
     const socket = io();
 //connect will be triggered by event from user

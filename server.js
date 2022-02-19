@@ -9,10 +9,20 @@ const app = express();
 const morgan = require("morgan");
 
 app.use(express.urlencoded({extended: true}));
+
+const cookieSession = require('cookie-session')
+app.use(cookieSession({
+  name: 'session',
+  keys: ["secret"],
+  maxAge: 24 * 60 * 60 * 1000 //24 hours
+}))
+
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
-const productsRoutes = require("./routes/products")
+const productsRoutes = require("./routes/products");
+const newListingRoutes = require("./routes/new_listing");
+const loginRoute = require("./routes/login");
 
 // const { query } = require("express");
 
@@ -53,6 +63,8 @@ app.use(express.static("public"));
 app.use("/users", usersRoutes(db));
 app.use("/products", productsRoutes(db));
 // Note: mount other resources here, using the same pattern above
+app.use("/new_listing", newListingRoutes(db));
+app.use("/login", loginRoute(db));
 
 // Home page
 // Warning: avoid creating more routes in this file!
@@ -62,25 +74,25 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-app.get("/products", (req, res) => {
-  res.render("products");
-});
+// app.get("/products", (req, res) => {
+//   res.render("products");
+// });
 
-app.get("/favourites", (req, res) => {
-  res.render("products");
-});
+// app.get("/favourites", (req, res) => {
+//   res.render("products");
+// });
 
-app.get("/register", (req, res) => {
-   res.render("register");
-});
+// app.get("/register", (req, res) => {
+//    res.render("register");
+// });
 
-app.get("/login", (req, res) => {
-   res.render("login");
-});
+// app.get("/login", (req, res) => {
+//    res.render("login");
+// });
 
-app.get("/new_listing", (req, res) => {
-  res.render("new_listing");
-})
+// app.get("/new_listing", (req, res) => {
+//   res.render("new_listing");
+// })
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

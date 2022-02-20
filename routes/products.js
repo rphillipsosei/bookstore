@@ -58,7 +58,7 @@ module.exports = (db) => {
 
   // POST /products/create = create new listing item
   router.post("/create", (req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     const user_id = req.session.user_id;
     const { photos, title, author, genre, isbn, description, condition, price } = req.body;
 
